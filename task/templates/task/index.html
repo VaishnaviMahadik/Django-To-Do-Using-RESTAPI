@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To do App</title>
+</head>
+<body>
+<h1>To do app list</h1>
+<div>
+<form method="POST">{% csrf_token %}
+    {{form.title}}
+   <button  type="submit">Submit</button>
+
+</form>
+</div>
+<hr>
+
+
+{% for t in task %}
+<div>{{t}} - {{t.complete}} - {{t.created_date}}</div>
+<div><a href="{% url 'update' t.id %}">Update</a>&nbsp;&nbsp;&nbsp;
+<a href="{% url 'delete' t.id %}">Delete</a></div><hr>
+{% endfor %}
+
+
+<hr>
+<script>
+
+</script>
+</body>
+</html>
